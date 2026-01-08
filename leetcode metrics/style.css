@@ -86,10 +86,10 @@ h1{
 }
 
 .circle{
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 4px solid rgb(6, 19, 114);
+    border: 4px solid rgb(89, 49, 201);
     position: relative;
     display: flex;
     align-items: center;
@@ -97,17 +97,12 @@ h1{
     font-size: 16px;
     color: rgb(237, 237, 237);
     font-weight: 700;
-    background: conic-gradient(#a69dfa var(--progress-degree, 0%), #814ce3 0%);
-}
-
-.circle::before {
-    content: "";
-    position: absolute;
-    width: 85px;
-    height: 85px;
-    border-radius: 50%;
-    background-color: rgba(30, 41, 59, 0.9);;
-    z-index: 1;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .circle span{
@@ -123,4 +118,46 @@ h1{
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+
+.easy-progress,
+.medium-progress,
+.hard-progress {
+  --progress-degree: 0%;
+
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: conic-gradient(
+    #a69dfa 0%,
+    #a69dfa var(--progress-degree),
+    #814ce3 var(--progress-degree),
+    #814ce3 100%
+  );
+}
+
+.stats-cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+h4{
+    font-size: 1rem;
+
+}
+.card{
+    background-color:rgb(132, 159, 254);
+    width: 230px;
+    max-width: 290px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
 }
