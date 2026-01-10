@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduResource Hub</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header> 
+        <nav>
+            <h1>EduResource Hub</h1>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- search and filter section -->
+         <section>
+            <h2>Find Study Resources</h2>
+
+            <!-- search -->
+             <div>
+                <label for="searchInput">Search Resources</label><br />
+                <input
+          type="text"
+          id="searchInput"
+          placeholder="Search by title..."
+        />
+             </div>
+
+             <!-- Filters -->
+      <div>
+        <label for="subjectFilter">Subject</label>
+        <select id="subjectFilter">
+          <option value="">All</option>
+          <option value="Web Development">Web Development</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="CSS">CSS</option>
+        </select>
+
+        <label for="difficultyFilter">Difficulty</label>
+        <select id="difficultyFilter">
+          <option value="">All</option>
+          <option value="Beginner">Beginner</option>
+          <option value="Intermediate">Intermediate</option>
+          <option value="Advanced">Advanced</option>
+        </select>
+      </div>
+
+      <!-- Resource List Section -->
+    <section>
+      <h2>Available Resources</h2>
+
+      <!-- Dynamic cards will be inserted here later -->
+      <div id="resourceContainer">
+
+        <!-- Temporary static card -->
+        <article>
+          <h3>HTML Basics</h3>
+          <p><strong>Subject:</strong> Web Development</p>
+          <p><strong>Difficulty:</strong> Beginner</p>
+          <p><strong>Type:</strong> Notes</p>
+          <button>Save ⭐</button>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>© 2026 EduResource Hub</p>
+  </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
