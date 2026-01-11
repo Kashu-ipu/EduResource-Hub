@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduResource Hub</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 
 </head>
 <body>
@@ -34,18 +35,18 @@
       <div>
         <label for="subjectFilter">Subject</label>
         <select id="subjectFilter">
-          <option value="">All</option>
-          <option value="Web Development">Web Development</option>
-          <option value="JavaScript">JavaScript</option>
-          <option value="CSS">CSS</option>
+          <option value="all">All</option>
+          <option value="html">HTML</option>
+          <option value="javascript">JavaScript</option>
+          <option value="css">CSS</option>
         </select>
 
         <label for="difficultyFilter">Difficulty</label>
         <select id="difficultyFilter">
-          <option value="">All</option>
-          <option value="Beginner">Beginner</option>
-          <option value="Intermediate">Intermediate</option>
-          <option value="Advanced">Advanced</option>
+          <option value="all">All</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
         </select>
       </div>
 
@@ -55,16 +56,6 @@
 
       <!-- Dynamic cards will be inserted here later -->
       <div id="resourceContainer">
-
-        <!-- Temporary static card -->
-        <article>
-          <h3>HTML Basics</h3>
-          <p><strong>Subject:</strong> Web Development</p>
-          <p><strong>Difficulty:</strong> Beginner</p>
-          <p><strong>Type:</strong> Notes</p>
-          <button>Save ⭐</button>
-        </article>
-
       </div>
     </section>
 
