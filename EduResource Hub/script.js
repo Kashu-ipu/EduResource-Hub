@@ -1,6 +1,7 @@
 const subjectFilter = document.getElementById("subjectFilter");
 const difficultyFilter = document.getElementById("difficultyFilter");
 const resourceContainer = document.getElementById("resourceContainer");
+const searchInput = document.getElementById("searchInput");
 
 // Resource data
 const resources = [
@@ -8,25 +9,29 @@ const resources = [
     title: "HTML Basics",
     subject: "html",
     difficulty: "beginner",
-    description: "Learn structure of web pages using HTML."
+    description: "Learn structure of web pages using HTML.",
+    link: "https://developer.mozilla.org/en-US/docs/Web/HTML"
   },
   {
     title: "CSS Flexbox",
     subject: "css",
     difficulty: "intermediate",
-    description: "Master layouts using Flexbox."
+    description: "Master layouts using Flexbox.",
+    link: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout"
   },
   {
     title: "JavaScript DOM",
     subject: "javascript",
     difficulty: "intermediate",
-    description: "Learn how JavaScript interacts with HTML."
+    description: "Learn how JavaScript interacts with HTML.",
+    link: "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"
   },
   {
     title: "Advanced JavaScript",
     subject: "javascript",
     difficulty: "advanced",
-    description: "Deep dive into closures, async JS, and more."
+    description: "Deep dive into closures, async JS, and more.",
+    link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
   }
 ];
 
@@ -47,8 +52,13 @@ function displayResources(list) {
       <p><strong>Subject:</strong> ${resource.subject}</p>
       <p><strong>Difficulty:</strong> ${resource.difficulty}</p>
       <p>${resource.description}</p>
-      <button>View Resource</button>
+      <button class="view-btn">View Resource</button>
     `;
+
+    const button = article.querySelector(".view-btn");
+    button.addEventListener("click", () => {
+      window.open(resource.link, "_blank");
+    });
 
     resourceContainer.appendChild(article);
   });
@@ -58,6 +68,7 @@ function displayResources(list) {
 function filterResources() {
   const selectedSubject = subjectFilter.value;
   const selectedDifficulty = difficultyFilter.value;
+  const searchText = searchInput.value.toLowerCase();
 
   const filtered = resources.filter(resource => {
     const subjectMatch =
@@ -67,7 +78,11 @@ function filterResources() {
       selectedDifficulty === "all" ||
       resource.difficulty === selectedDifficulty;
 
-    return subjectMatch && difficultyMatch;
+      const searchMatch =
+      resource.title.toLowerCase().includes(searchText) ||
+      resource.description.toLowerCase().includes(searchText);
+
+    return subjectMatch && difficultyMatch && searchMatch;
   });
 
   displayResources(filtered);
@@ -76,8 +91,10 @@ function filterResources() {
 // Event listeners
 subjectFilter.addEventListener("change", filterResources);
 difficultyFilter.addEventListener("change", filterResources);
+searchInput.addEventListener("input", filterResources);
 
 // Initial render
 displayResources(resources);
+
 
 
