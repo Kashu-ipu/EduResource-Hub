@@ -2,6 +2,8 @@ const subjectFilter = document.getElementById("subjectFilter");
 const difficultyFilter = document.getElementById("difficultyFilter");
 const resourceContainer = document.getElementById("resourceContainer");
 const searchInput = document.getElementById("searchInput");
+const resetBtn = document.getElementById("resetBtn");
+
 
 // Resource data
 const resources = [
@@ -40,7 +42,11 @@ function displayResources(list) {
   resourceContainer.innerHTML = "";
 
   if (list.length === 0) {
-    resourceContainer.innerHTML = "<p>No resources found.</p>";
+    resourceContainer.innerHTML = resourceContainer.innerHTML = `
+  <p style="text-align:center; font-weight:bold;">
+    No matching resources found 😕
+  </p>
+`;
     return;
   }
 
@@ -92,6 +98,14 @@ function filterResources() {
 subjectFilter.addEventListener("change", filterResources);
 difficultyFilter.addEventListener("change", filterResources);
 searchInput.addEventListener("input", filterResources);
+resetBtn.addEventListener("click", () => {
+  subjectFilter.value = "all";
+  difficultyFilter.value = "all";
+  searchInput.value = "";
+
+  displayResources(resources);
+});
+
 
 // Initial render
 displayResources(resources);
