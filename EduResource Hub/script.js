@@ -8,6 +8,7 @@ const resetBtn = document.getElementById("resetBtn");
 // Resource data
 const resources = [
   {
+    id: 1,
     title: "HTML Basics",
     subject: "html",
     difficulty: "beginner",
@@ -15,6 +16,7 @@ const resources = [
     link: "https://developer.mozilla.org/en-US/docs/Web/HTML"
   },
   {
+    id: 2,
     title: "CSS Flexbox",
     subject: "css",
     difficulty: "intermediate",
@@ -22,6 +24,7 @@ const resources = [
     link: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout"
   },
   {
+    id: 3,
     title: "JavaScript DOM",
     subject: "javascript",
     difficulty: "intermediate",
@@ -29,6 +32,7 @@ const resources = [
     link: "https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model"
   },
   {
+    id: 4,
     title: "Advanced JavaScript",
     subject: "javascript",
     difficulty: "advanced",
@@ -42,7 +46,7 @@ function displayResources(list) {
   resourceContainer.innerHTML = "";
 
   if (list.length === 0) {
-    resourceContainer.innerHTML = resourceContainer.innerHTML = `
+    resourceContainer.innerHTML = `
   <p style="text-align:center; font-weight:bold;">
     No matching resources found 😕
   </p>
@@ -50,7 +54,10 @@ function displayResources(list) {
     return;
   }
 
+  const bookmarks = getBookmarks(); 
+
   list.forEach(resource => {
+    const isBookmarked = bookmarks.includes(resource.id) ? "★" : "☆";
     const article = document.createElement("article");
 
     article.innerHTML = `
@@ -59,6 +66,7 @@ function displayResources(list) {
       <p><strong>Difficulty:</strong> ${resource.difficulty}</p>
       <p>${resource.description}</p>
       <button class="view-btn">View Resource</button>
+      <button class="bookmark-btn" data-id="${resource.id}">${isBookmarked}</button>
     `;
 
     const button = article.querySelector(".view-btn");
@@ -68,6 +76,8 @@ function displayResources(list) {
 
     resourceContainer.appendChild(article);
   });
+
+  updateBookmarkUI();
 }
 
 // Filter logic
@@ -94,6 +104,39 @@ function filterResources() {
   displayResources(filtered);
 }
 
+function getBookmarks() {
+  return JSON.parse(localStorage.getItem("bookmarks")) || [];
+}
+
+function saveBookmarks(bookmarks) {
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+}
+
+function toggleBookmark(resourceId) {
+  let bookmarks = getBookmarks();
+
+  if (bookmarks.includes(resourceId)) {
+    bookmarks = bookmarks.filter(id => id !== resourceId);
+  } else {
+    bookmarks.push(resourceId);
+  }
+
+  saveBookmarks(bookmarks);
+  updateBookmarkUI();
+}
+
+function updateBookmarkUI() {
+  const bookmarks = getBookmarks();
+
+  document.querySelectorAll(".bookmark-btn").forEach(btn => {
+    const id = Number(btn.dataset.id);
+    btn.textContent = bookmarks.includes(id) ? "★" : "☆";
+  });
+}
+
+updateBookmarkUI();
+
+
 // Event listeners
 subjectFilter.addEventListener("change", filterResources);
 difficultyFilter.addEventListener("change", filterResources);
@@ -105,6 +148,14 @@ resetBtn.addEventListener("click", () => {
 
   displayResources(resources);
 });
+
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("bookmark-btn")) {
+    const id = Number(e.target.dataset.id);
+    toggleBookmark(id);
+  }
+});
+
 
 
 // Initial render
