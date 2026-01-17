@@ -6,7 +6,7 @@ It helps users find curated study resources using **search, filters, bookmarks, 
 ---
 
 ## 🚀 Live Demo
-👉 (Optional: Add GitHub Pages link here if deployed)
+👉 https://kashu-ipu.github.io/EduResource-Hub/
 
 ---
 
