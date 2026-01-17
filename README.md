@@ -13,10 +13,10 @@ It helps users find curated study resources using **search, filters, bookmarks, 
 ## 🖥️ Screenshots
 
 ### Desktop View
-![Desktop View](screenshots/desktopview.png) 
+![Desktop View](EduResource%20Hub/screenshots/desktopview.png) 
 
 ### Mobile View
-![Mobile View](screenshots/mobileview.png)
+![Mobile View](EduResource%20Hub/screenshots/mobileview.png)
 
 ---
 
