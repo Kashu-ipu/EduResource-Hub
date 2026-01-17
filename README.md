@@ -13,7 +13,7 @@ It helps users find curated study resources using **search, filters, bookmarks, 
 ## 🖥️ Screenshots
 
 ### Desktop View
-![Desktop View](screenshots/desktopview.png)
+![Desktop View](screenshots/desktopview.png) 
 
 ### Mobile View
 ![Mobile View](screenshots/mobileview.png)
